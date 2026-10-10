@@ -49,3 +49,15 @@ Logs and task state are kept in the work directory, with seven-day retention.
 Release archives use the names `awscli-0.4.1.tar.gz` (full tool) and
 `awscli-agent-0.4.1.tar.gz` (agent-only installer). Both expose
 `awscli agent`; the agent-only installer preserves an existing full awscli.
+
+## One-command server Agent deployment
+
+Run as the server user; supports Linux glibc x86_64/ARM64 and macOS. The deployment script prepares user-local Python 3.11 and the official AWS CLI when needed, verifies the Agent package, checks the S3 channel, and starts a user service or background process.
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/CabelChen/homebrew-awscli-s3/main/deploy.sh -o deploy.sh && sh deploy.sh --store s3://YOUR_BUCKET/awscli-channel --name server-a
+```
+
+The server must already have its own AWS profile, environment credentials, or IAM role. Add `--profile your-profile` to use a configured profile. The client and Agent must use the same S3 prefix and Agent name. No credentials are included in the script. Existing configuration and Agent identity are retained on repeat deployments.
+
+See [DEPLOY.md](DEPLOY.md) for options, dependency requirements, log locations, service behavior, and custom work directories.

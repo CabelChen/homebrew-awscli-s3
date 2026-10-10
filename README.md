@@ -34,3 +34,18 @@ awscli zsh
 Bash/Zsh execute each line as a separate remote task. Variables do not
 persist between lines; interactive TTY applications are unsupported.
 MCP integration is available through `awscli-mcp`.
+
+To run this installation as the server agent:
+
+```sh
+awscli agent --name server-a --work-dir "$HOME/.local/state/awscli-agent"
+```
+
+The agent reads the `[client]` S3 settings from the same config.ini.
+Configure AWS authentication on the server, and use a distinct agent name
+for each computer sharing a S3 prefix. This starts a foreground process.
+Logs and task state are kept in the work directory, with seven-day retention.
+
+Release archives use the names `awscli-0.4.1.tar.gz` (full tool) and
+`awscli-agent-0.4.1.tar.gz` (agent-only installer). Both expose
+`awscli agent`; the agent-only installer preserves an existing full awscli.

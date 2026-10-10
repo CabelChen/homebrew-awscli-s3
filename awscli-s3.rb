@@ -1,9 +1,9 @@
 class AwscliS3 < Formula
   desc "Run remote scripts, Git and shell commands through S3"
   homepage "https://github.com/CabelChen/homebrew-awscli-s3"
-  url "https://github.com/CabelChen/homebrew-awscli-s3/releases/download/v0.4.0/awscli-s3-0.4.0.tar.gz"
-  version "0.4.0"
-  sha256 "b239caf859903e901702c6399dbd70fb43186215ac9822f1c2c31202238584ee"
+  url "https://github.com/CabelChen/homebrew-awscli-s3/releases/download/v0.4.1/awscli-0.4.1.tar.gz"
+  version "0.4.1"
+  sha256 "30756a7cd34b33f958cf8bfc09cd09c988f8032f0d4b2a54b193ec84ae144403"
 
   depends_on "awscli"
   depends_on "python@3.14"
